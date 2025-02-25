@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>957</width>
+    <height>647</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>957</width>
+    <height>647</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>957</width>
+    <height>647</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QMainWindow{background-color: #FAB12F}</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QWidget" name="verticalLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>20</y>
+      <width>791</width>
+      <height>361</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <widget class="QLabel" name="label">
+       <property name="font">
+        <font>
+         <family>Arial Rounded MT</family>
+         <pointsize>48</pointsize>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
+       <property name="text">
+        <string>Congratulation!</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignmentFlag::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QFrame" name="frame">
+       <property name="font">
+        <font>
+         <family>Consolas</family>
+         <pointsize>18</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QFrame{background-color:#FA812F; border-radius:15px}</string>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::Shape::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Shadow::Raised</enum>
+       </property>
+       <widget class="QLabel" name="labelError">
+        <property name="geometry">
+         <rect>
+          <x>430</x>
+          <y>130</y>
+          <width>221</width>
+          <height>38</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Arial Rounded MT</family>
+          <pointsize>18</pointsize>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>?</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_3">
+        <property name="geometry">
+         <rect>
+          <x>50</x>
+          <y>43</y>
+          <width>369</width>
+          <height>38</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Arial Rounded MT</family>
+          <pointsize>18</pointsize>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Time:</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="labelNum">
+        <property name="geometry">
+         <rect>
+          <x>430</x>
+          <y>-1</y>
+          <width>221</width>
+          <height>38</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Arial Rounded MT</family>
+          <pointsize>18</pointsize>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>?</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="labelTime">
+        <property name="geometry">
+         <rect>
+          <x>430</x>
+          <y>43</y>
+          <width>221</width>
+          <height>38</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Arial Rounded MT</family>
+          <pointsize>18</pointsize>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>?</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_2">
+        <property name="geometry">
+         <rect>
+          <x>50</x>
+          <y>-1</y>
+          <width>369</width>
+          <height>38</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Arial Rounded MT</family>
+          <pointsize>18</pointsize>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Number of questions: </string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_4">
+        <property name="geometry">
+         <rect>
+          <x>50</x>
+          <y>87</y>
+          <width>369</width>
+          <height>37</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Arial Rounded MT</family>
+          <pointsize>18</pointsize>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Support: </string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="labelSP">
+        <property name="geometry">
+         <rect>
+          <x>430</x>
+          <y>87</y>
+          <width>221</width>
+          <height>37</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Arial Rounded MT</family>
+          <pointsize>18</pointsize>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>?</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_5">
+        <property name="geometry">
+         <rect>
+          <x>50</x>
+          <y>130</y>
+          <width>369</width>
+          <height>38</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Arial Rounded MT</family>
+          <pointsize>18</pointsize>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Error: </string>
+        </property>
+       </widget>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QLabel" name="label_6">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>400</y>
+      <width>231</width>
+      <height>171</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>../source/start1-removebg-preview.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_7">
+    <property name="geometry">
+     <rect>
+      <x>660</x>
+      <y>400</y>
+      <width>191</width>
+      <height>161</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>../source/finish1-removebg-preview.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_2">
+    <property name="geometry">
+     <rect>
+      <x>370</x>
+      <y>440</y>
+      <width>201</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Arial Rounded MT</family>
+      <pointsize>18</pointsize>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="statusTip">
+     <string>Shortcut: -</string>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{background-color:#FEF3E2; color:#FA812F; border-radius:10px}
+QPushButton:hover{background-color:#FA4032}
+QPushButton:pressed{background-color:#FEF3E2}</string>
+    </property>
+    <property name="text">
+     <string>Reset</string>
+    </property>
+    <property name="shortcut">
+     <string>-</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>957</width>
+     <height>33</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
