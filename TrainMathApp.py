@@ -5,7 +5,6 @@ from PyQt6.QtCore import QTimer
 from PyQt6.QtWidgets import QApplication, QMainWindow, QMessageBox
 from PyQt6.uic import loadUi
 from TrainMathFunction import createAndCheckCal
-import random
 
 class MathGUI1(QMainWindow):
     def __init__(self, startInfo):
