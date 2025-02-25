@@ -4,6 +4,7 @@ from PyQt6 import QtWidgets, QtGui
 from PyQt6.QtCore import QTimer
 from PyQt6.QtWidgets import QApplication, QMainWindow, QMessageBox
 from PyQt6.uic import loadUi
+from TrainMathFunction import createAndCheckCal
 import random
 
 class MathGUI1(QMainWindow):
@@ -13,19 +14,23 @@ class MathGUI1(QMainWindow):
         self.startInfo = startInfo
         self.start.clicked.connect(self.submit)
 
+    # Kiểm tra thông tin nhập và lưu vào startInfo
     def submit(self):
         try:
-            num = self.lineNumber.text()
-            if int(num) > 100:
+            num = int(self.lineNumber.text())
+            if num > 100:
                 self.show_popup("Too many questions!")
                 return
-
+            if num <= 0:
+                self.show_popup("You don't want to study, right ?")
+                return
             self.startInfo[0] = self.comboBox.currentText()
-            self.startInfo[1] = int(num)
+            self.startInfo[1] = num
             widget.setCurrentIndex(widget.currentIndex()+1)
         except:
             self.show_popup("You must enter number!")
 
+    # Thông báo nếu có vấn đề
     def show_popup(self, text):
         msg = QMessageBox()
         msg.setWindowTitle("Warning")
@@ -64,10 +69,11 @@ class MathGUI2(QMainWindow):
         self.sp = 0
         self.error = 0
 
+        # Khởi tạo câu hỏi thứ bao nhiêu / tổng số câu hỏi
         self.eachNum.setText(f"{self.count + 1}")
         self.fullNum.setText(f"{startInfo[1]}")
 
-        # Khởi tạo biến cho 2 số
+        # Khởi tạo số lớn nhất và nhỏ nhất có thể xuất hiện trên phép tính
         if startInfo[0] == "Easy":
             self.min = 1
             self.max = 19
@@ -76,8 +82,9 @@ class MathGUI2(QMainWindow):
             self.max = 49
         if startInfo[0] == "Hard":
             self.min = 100
-            self.max = 1000
+            self.max = 499
 
+        # Khởi tạo bộ đếm thời gian
         self.clockContinue = True
         self.minute = 0
         self.second = 0
@@ -85,12 +92,14 @@ class MathGUI2(QMainWindow):
         self.timer.start(1000)
         self.timer.timeout.connect(self.nextSecond)
 
-        self.checkCreateCal()
+        # Tạo các thành phần của phép tính
+        self.a, self.b, self.operand, self.answer = createAndCheckCal(self.min, self.max)
         self.moveCalToGUI()
 
     def moveToScreen1(self):
         widget.setCurrentIndex(widget.currentIndex() -1)
 
+    # Bộ đếm giờ chạy
     def nextSecond(self):
         if self.second == 59:
             self.second=0
@@ -100,6 +109,7 @@ class MathGUI2(QMainWindow):
         self.lcdSecond.display(self.second)
         self.lcdMinute.display(self.minute)
 
+    # Dừng bộ đếm giờ
     def control(self):
         if self.clockContinue:
             self.timer.stop()
@@ -108,28 +118,11 @@ class MathGUI2(QMainWindow):
             self.timer.start(1000)
             self.stop.setText("Stop")
         self.clockContinue = not self.clockContinue
-        print("Stop clicked !")
-
-    def createCal(self):
-        self.a = random.randint(self.min, self.max)
-        self.b = random.randint(self.min, self.max)
-        self.operand = random.choice(["+","-"])
-        question = str(self.a) + ' ' + self.operand + ' ' + str(self.b)
-        self.answer = eval(question)
 
     def moveCalToGUI(self):
         self.firstNumber.setText(f"{self.a}")
         self.secondNumber.setText(f"{self.b}")
         self.operation.setText(f"{self.operand}")
-
-    def checkCreateCal(self):
-        self.createCal()
-        if startInfo[0] == "Easy":
-            while self.answer < 0 or self.answer > 100:
-                self.createCal()
-        else:
-            while self.answer < 0:
-                self.createCal()
 
     def submit(self):
         # Kiểm tra xem người dùng có nhập số không
@@ -139,7 +132,8 @@ class MathGUI2(QMainWindow):
             self.show_popup()
             return
         # Kiểm tra kết quả nhập
-        if your_ans == self.answer: # Nếu làm đúng
+        # Nếu làm đúng
+        if your_ans == self.answer:
             self.notify.setText("True")
             self.streakRight += 1
             self.streakWrong = 0
@@ -153,7 +147,6 @@ class MathGUI2(QMainWindow):
             # Số câu hỏi hoàn thành
             self.count += 1
             if self.count == startInfo[1]:
-                self.notify.setText("Finish")
                 self.endInfo[0] = self.startInfo[1]
                 self.endInfo[1] = self.minute
                 self.endInfo[2] = self.second
@@ -161,12 +154,13 @@ class MathGUI2(QMainWindow):
                 self.endInfo[4] = self.error
                 widget.setCurrentIndex(widget.currentIndex()+1)
 
-            # Không để số âm và lớn hơn 10
-            self.checkCreateCal()
+            # Tạo phép tính mới
+            self.a, self.b, self.operand, self.answer = createAndCheckCal(self.min, self.max)
             self.moveCalToGUI()
             self.eachNum.setText(f"{self.count + 1}")
 
-        else: # Nếu làm sai
+        # Nếu làm sai
+        else:
             self.notify.setText("False")
             self.error += 1
             self.streakWrong += 1
@@ -177,10 +171,12 @@ class MathGUI2(QMainWindow):
                 self.label_2.setPixmap(QtGui.QPixmap("source/social-credit-wrong-less.jpg"))
             self.lineAnswer.setText("")
 
+    # Trợ giúp
     def support(self):
         self.notify.setText(f"{self.answer}")
         self.sp += 1
 
+    # Hiện thông báo nếu giá trị nhập vào không phải số
     def show_popup(self):
         msg = QMessageBox()
         msg.setWindowTitle("Warning")
@@ -208,7 +204,10 @@ class MathGUI3(QMainWindow):
 
 
 if __name__ == "__main__":
-    startInfo = ["Easy", 0] #Mode and number of questions
+    # Khởi tạo mảng chứa độ khó và số câu hỏi
+    startInfo = ["Easy", 0]
+
+    # Khởi tạo mảng kết thúc gồm số câu hỏi, thời gian làm bài, số lần trợ giúp và số lần sai
     endInfo = [0, 0, 0, 0, 0]
     app = QApplication(sys.argv)
 
